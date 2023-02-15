@@ -1,4 +1,4 @@
-import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import { Button, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -6,7 +6,7 @@ import states from "../data/states"
 import { format } from "date-fns";
 import { employeesAction } from "../redux/employeeList-slice";
 import { useDispatch } from "react-redux";
-
+import Modal from "react-modal-jcto";
 
 const CreateEmployee = () => {
 
@@ -19,6 +19,7 @@ const CreateEmployee = () => {
     const [state, setState] = useState(null);
     const [zipCode, setZipCode] = useState("");
     const [department, setDepartment] = useState(null);
+    const [showModal, setShowModal] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -47,6 +48,7 @@ const CreateEmployee = () => {
         setState(null);
         setZipCode("");
         setDepartment(null);
+        setShowModal(true);
     }
 
     return (
@@ -163,7 +165,7 @@ const CreateEmployee = () => {
                 <Button variant="contained" className="save-button" onClick={handleSave}>Save</Button>
 
             </form>
-
+            {showModal ? <Modal modalText="Employee succesfully added" closeModalFunction={() => setShowModal(false)}/> : ""}
         </>
     )
 }
