@@ -1,14 +1,12 @@
 import MaterialReactTable from 'material-react-table';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-// import mockedData from '../data/mockedEmployeesData';
 
 
 const EmployeesTable = () => {
 
     const data = useSelector((state) => state.employeesReducer.employees);
 
-    // const data = mockedData;
 
     const columns = useMemo(
         () => [
