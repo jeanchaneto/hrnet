@@ -8,6 +8,7 @@ import { employeesAction } from "../redux/employeeList-slice";
 import { useDispatch } from "react-redux";
 import Modal from "react-modal-jcto";
 
+//Button, InputLabel, MenuItem, Select, TextField components documentation available on https://mui.com/
 const CreateEmployee = () => {
 
     const [firstName, setFirstName] = useState("");
@@ -23,6 +24,7 @@ const CreateEmployee = () => {
 
     const dispatch = useDispatch();
 
+    //Creates newEmployee object which properties are equal to local states
     const newEmployee = {
         firstName,
         lastName,
@@ -35,6 +37,7 @@ const CreateEmployee = () => {
         department,
     };
 
+    //Handles save button click, dispatch action to add newEmployee object and resets the form by resetting the local states
     const handleSave = (e) => {
         e.preventDefault();
         dispatch(employeesAction.addEmployee(newEmployee));
@@ -63,14 +66,16 @@ const CreateEmployee = () => {
 
                 <TextField
                     className="form-field"
-                    onChange={(e) => setFirstName(e.target.value)} label="First Name"
+                    onChange={(e) => setFirstName(e.target.value)}
+                    label="First Name"
                     variant="outlined"
                     value={firstName}
                     size="small" />
 
                 <TextField
                     className="form-field"
-                    onChange={(e) => setLastName(e.target.value)} label="Last Name"
+                    onChange={(e) => setLastName(e.target.value)}
+                    label="Last Name"
                     variant="outlined"
                     value={lastName}
                     size="small" />
@@ -145,7 +150,8 @@ const CreateEmployee = () => {
                         size="small" />
                 </fieldset>
 
-                <InputLabel id="department-select-label" className="form-label">Department</InputLabel>
+                <InputLabel id="department-select-label"
+                    className="form-label">Department</InputLabel>
                 <Select
                     className="form-field"
                     labelId="department-select-label"
@@ -162,10 +168,14 @@ const CreateEmployee = () => {
                     <MenuItem value="Engineering">Human Resources</MenuItem>
                     <MenuItem value="Legal">Legal</MenuItem>
                 </Select>
-                <Button variant="contained" className="save-button" onClick={handleSave}>Save</Button>
+                <Button variant="contained"
+                    className="save-button"
+                    onClick={handleSave}>Save</Button>
 
             </form>
-            {showModal ? <Modal modalText="Employee succesfully added" closeModalFunction={() => setShowModal(false)}/> : ""}
+            {/* Display modal according to showModal value*/}
+            {showModal ? <Modal modalText="Employee succesfully added"
+                closeModalFunction={() => setShowModal(false)} /> : ""}
         </>
     )
 }

@@ -2,11 +2,10 @@ import MaterialReactTable from 'material-react-table';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
-
+//Material react table commponent, check library documentation at https://www.material-react-table.com/
 const EmployeesTable = () => {
 
     const data = useSelector((state) => state.employeesReducer.employees);
-
 
     const columns = useMemo(
         () => [
